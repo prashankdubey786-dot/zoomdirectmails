@@ -1,0 +1,27 @@
+# Zoom Direct Mails — Static Export Ready
+
+This package contains your actual Next.js project configured for **static export**.
+
+## What changed
+- `next.config.mjs` set to `output: 'export'`, `trailingSlash: true`, and `images.unoptimized: true`
+- `package.json` scripts include `"build:static": "next build && next export"`
+- GitHub Actions workflow at `.github/workflows/static-export.yml` builds and produces a **cpanel-static-upload.zip** artifact
+
+## How to get the cPanel-ready ZIP
+### Option A — Local build
+1. Install Node 20+
+2. From the project root:
+   ```bash
+   pnpm install   # or npm install
+   npm run build:static
+   ```
+3. Upload the **contents of `out/`** into your cPanel `public_html`.
+
+### Option B — GitHub Actions (no local Node required)
+1. Create a GitHub repo and push these files.
+2. Go to **Actions** → run **Static Export (cPanel-ready)** on the `main` branch.
+3. When it finishes, download the artifact **cpanel-static-upload**.
+4. Upload the ZIP’s contents to `public_html`.
+
+> Your domain: https://zoomdirectmails.com
+
